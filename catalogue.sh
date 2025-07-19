@@ -81,7 +81,7 @@ VALIDATE $? "catalogue daemon reload"
 systemctl enable catalogue &>> $LOGFILE
 
 #ALIDATE $?"Enable Catalogue"
-VALIDATE $ "Enable Catalogue
+VALIDATE $? "Enable Catalogue"
 
 systemctl start catalogue &>> $LOGFILE
 

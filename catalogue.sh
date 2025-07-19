@@ -7,7 +7,7 @@ Y="\e[33m"
 N="\e[0m"
 MONGDB_HOST=mongodb04062025.devopsawscloud.shop
 
-TIMESTAMP=$(date +%F-%H-%M-%S)
+TIMESTAMP=$(date +%F-%H-%M-%S)  
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
 echo "script started executing at $TIMESTAMP" &>> $LOGFILE
@@ -57,7 +57,7 @@ VALIDATE $? "Creating App Directory"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
 
-VALIDATE "Downloading catalogue Application"
+VALIDATE $? "Downloading catalogue application"
 
 cd /app 
  

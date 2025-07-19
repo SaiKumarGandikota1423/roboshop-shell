@@ -43,7 +43,7 @@ dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "Installing NOdeJS:18"
 
 id roboshop #if roboshop user does not exist, then it is failed
-if [ $? -ne 0 ]
+if [ $? -ne 0 ] 
 then 
     useradd roboshop
     VALIDATE $? "roboshop user creation"

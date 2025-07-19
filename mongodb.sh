@@ -51,4 +51,4 @@ VALIDATE $? "Remote access to MongoDB"
 
 systemctl restart mongod &>> $LOGFILE
 
-VALIDATE $? "Restating Mondod"
+VALIDATE $? "Restating Mongod"

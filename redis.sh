@@ -34,7 +34,7 @@ dnf install -y epel-release
 
 VALIDATE $? "Installing EPEL"
 
-dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 VALIDATE $? "Installing Remi release"
 

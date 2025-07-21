@@ -39,7 +39,7 @@ dnf module enable redis:remi-6.2 -y
 
 VALIDATE $? "enabling redis"
 
-dnf install redis -y
+dnf install redis -y --skip-broken
 
 VALIDATE $? "Installing Redis"
 

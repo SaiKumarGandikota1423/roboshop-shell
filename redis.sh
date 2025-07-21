@@ -35,11 +35,11 @@ dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
 
 VALIDATE $? "Installing Remi release"
 
-dnf module enable redis:remi-release-8.10-2.el8.remi.noarch -y
+dnf module enable redis:remi-6.2 -y
 
 VALIDATE $? "enabling redis"
 
-dnf install redis -y --skip-broken
+dnf install redis -y --skip-broken --nobest
 
 VALIDATE $? "Installing Redis"
 

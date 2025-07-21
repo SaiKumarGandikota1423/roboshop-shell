@@ -34,15 +34,18 @@ dnf install -y epel-release
 
 VALIDATE $? "Installing EPEL"
 
-dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+#dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+curl -O https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+rpm -Uvh remi-release-8.rpm --nodeps
+VALIDATE $? "Installing Remi release (forced)"
 
-VALIDATE $? "Installing Remi release"
+#VALIDATE $? "Installing Remi release"
 
 dnf module enable redis:remi-6.2 -y
 
 VALIDATE $? "enabling redis"
 
-dnf install redis -y --skip-broken --nobest
+dnf install redis -y --nobest --skip-broken
 
 VALIDATE $? "Installing Redis"
 

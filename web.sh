@@ -10,7 +10,7 @@ MONGDB_HOST=mongodb04062025.devopsawscloud.shop
 TIMESTAMP=$(date +%F-%H-%m-%S) 
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
-echo "scrip started executing at $TIMESTAMP" &>> $LOGFILE
+echo "script started executing at $TIMESTAMP" &>> $LOGFILE
 
 VALIDATE(){
     if [ $1 -ne 0 ]
@@ -27,7 +27,7 @@ then
     echo -e "$R ERROR:: Please run this script with root user access"
     exit 1
 else 
-    else -e "You are the root user"
+    echo -e "You are the root user"
 fi
 
 dnf install nginx -y &>> $LOGFILE

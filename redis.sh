@@ -42,7 +42,7 @@ dnf module enable redis:remi-6.2 -y
 
 VALIDATE $? "enabling redis"
 
-dnf install redis -y --nobest
+dnf install redis -y --skip-broken --nobest
 
 VALIDATE $? "Installing Redis"
 

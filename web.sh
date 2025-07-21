@@ -62,6 +62,15 @@ cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf 
 
 VALIDATE $? "copied roboshop reverse proxy config"
 
+echo -e "\n--- NGINX STATUS ---" &>> $LOGFILE
+systemctl status nginx &>> $LOGFILE
+
+echo -e "\n--- NGINX CONFIG TEST ---" &>> $LOGFILE
+nginx -t &>> $LOGFILE
+
+echo -e "\n--- JOURNAL LOGS ---" &>> $LOGFILE
+journalctl -xeu nginx -n 20 &>> $LOGFILE
+
 nginx -t &>> $LOGFILE
 
 VALIDATE $? "Validating Nginx config"

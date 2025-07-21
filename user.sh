@@ -8,7 +8,7 @@ N="\e[0m"
 MONGDB_HOST=mongodb04062025.devopsawscloud.shop
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
-LOGFILE="/tmm/$0-$TIMESTAMP.log"
+LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
 echo "script started executing at $TIMESTAMP" &>> $LOGFILE
 

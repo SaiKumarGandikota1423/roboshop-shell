@@ -7,32 +7,32 @@ Y="\e[33m"
 N="\e[0m"
 MONGDB_HOST=mongodb04062025.devopsawscloud.shop
 
-TIMESTAMP=$(date +%F-%H-%m-%S) 
+TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
-echo "script started executing at $TIMESTAMP" &>> $LOGFILE
+echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
 VALIDATE(){
     if [ $1 -ne 0 ]
-    then 
+    then
         echo -e "$2 ... $R FAILED $N"
         exit 1
-    else 
+    else
         echo -e "$2 ... $G SUCCESS $N"
     fi
 }
 
 if [ $ID -ne 0 ]
-then 
-    echo -e "$R ERROR:: Please run this script with root user access $N"
-    exit 1
-else 
-    echo "You are the root user"
-fi
+then
+    echo -e "$R ERROR:: Please run this script with root access $N"
+    exit 1 # you can give other than 0
+else
+    echo "You are root user"
+fi # fi means reverse of if, indicating condition end
 
 dnf install nginx -y &>> $LOGFILE
-
-VALIDATE $?  "Installing nginx"
+ 
+VALIDATE $? "Installing nginx"
 
 systemctl enable nginx &>> $LOGFILE
 
@@ -57,21 +57,11 @@ VALIDATE $? "moving nginx html directory"
 unzip -o /tmp/web.zip &>> $LOGFILE
 
 VALIDATE $? "unzipping web"
-
+ 
 cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> $LOGFILE 
 
 VALIDATE $? "copied roboshop reverse proxy config"
 
-# Restart nginx
 systemctl restart nginx &>> $LOGFILE
+
 VALIDATE $? "restarted nginx"
-
-# --- Debugging and validation ---
-echo -e "\n--- NGINX STATUS ---" &>> $LOGFILE
-systemctl status nginx &>> $LOGFILE
-
-echo -e "\n--- NGINX CONFIG TEST ---" &>> $LOGFILE
-nginx -t &>> $LOGFILE
-
-echo -e "\n--- JOURNAL LOGS ---" &>> $LOGFILE
-journalctl -xeu nginx -n 20 &>> $LOGFILE

@@ -10,7 +10,7 @@ MONGDB_HOST=mongodb04062025.devopsawscloud.shop
 TIMESTAMP=$(date +%F-%H-%m-%S) 
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
-echo "scrip started executing at $TIMESTAMP" &>>#LOGFILE
+echo "scrip started executing at $TIMESTAMP" &>> $LOGFILE
 
 VALIDATE(){
     if [ $1 -ne 0 ]

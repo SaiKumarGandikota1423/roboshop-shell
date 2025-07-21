@@ -27,7 +27,7 @@ then
     echo -e "$R ERROR:: Please run this script with root user access $N"
     exit 1
 else 
-    echo -e "You are the root user"
+    echo "You are the root user"
 fi
 
 dnf install nginx -y &>> $LOGFILE

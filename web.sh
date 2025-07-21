@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ID=$(id -ne 0)
+ID=$(id -ne u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -24,7 +24,7 @@ VALIDATE(){
 
 if [ $ID -ne 0 ]
 then 
-    echo -e "$R ERROR:: Please run this script with root user access"
+    echo -e "$R ERROR:: Please run this script with root user access $N"
     exit 1
 else 
     echo -e "You are the root user"

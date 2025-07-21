@@ -30,8 +30,11 @@ else
     echo "You are root user"
 fi # fi means reverse of if, indicating condition end
 
+dnf install -y epel-release
 
-dnf install -y https://rpms.remirepo.net/enterprise/8/remi-release-8.4-1.el8.remi.noarch.rpm -y
+VALIDATE $? "Installing EPEL"
+
+dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
 
 VALIDATE $? "Installing Remi release"
 
@@ -39,7 +42,7 @@ dnf module enable redis:remi-6.2 -y
 
 VALIDATE $? "enabling redis"
 
-dnf install redis -y --skip-broken --nobest
+dnf install redis -y --nobest
 
 VALIDATE $? "Installing Redis"
 

@@ -27,7 +27,7 @@ then
     echo -e "$R ERROR:: Please run script with root user access"
     exit 1 # you can give other than 0
 else
-    echo -e "YOu Are The ROOT User"
+    echo -e "You Are The ROOT User"
 fi # fi means reverse of if, indicating condition end
 
 dnf module disable nodejs -y &>> $LOGFILE

@@ -31,7 +31,7 @@ else
 fi # fi means reverse of if, indicating condition end
 
 
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+dnf install -y https://rpms.remirepo.net/enterprise/8/remi-release-8.4-1.el8.remi.noarch.rpm -y
 
 VALIDATE $? "Installing Remi release"
 

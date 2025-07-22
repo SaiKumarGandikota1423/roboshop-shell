@@ -84,7 +84,8 @@ dnf install mysql -y &>> $LOGFILE
 
 VALIDATE $? "install MySQL client"
 
-mysql -h mysql04062025.devopsawscloud.shop -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
+#mysql -h mysql04062025.devopsawscloud.shop -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
+mysql -h mysql04062025.devopsawscloud.shop -uroot -pRoboShop@1 < /app/db/schema.sql &>> $LOGFILE
 
 VALIDATE $? "loading shipping data"
 

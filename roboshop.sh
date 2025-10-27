@@ -1,9 +1,9 @@
 #!/bin/bash
 
-AMI=ami-0b4f379183e5706b9
-SG_ID=sg-0e6e277cb9db6a9b2
+AMI=ami-0b4f379183e5706b9 #this keeps on changing
+SG_ID=sg-0e6e277cb9db6a9b2 #replace with your SG ID
 INSTANCES=("mongodb" "Redis" "mysql" "rabbitmq" "catalouge" "user" "cart" "shipping" "payment" "dispatch" "web" )
-ZONE_ID=Z03390721TAW3412ZTWXG
+ZONE_ID=Z03390721TAW3412ZTWXG  # replace your zone ID
 DOMAIN_NAME=devopsawscloud.shop
 
 for i in "${INSTANCES[@]}"
@@ -44,7 +44,8 @@ do
         {
             "Comment": "Creating a record set for cognito endpoint"
             ,"Changes": [{
-            "Action"              : "CREATE"
+            "Action"              : "UPSERT"
+  #        #"Action"              : "CREATE"
             ,"ResourceRecordSet"  : {
                 "Name"              : "'$i'.'$DOMAIN_NAME'"
                 ,"Type"             : "A"
